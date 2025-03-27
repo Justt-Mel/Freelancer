@@ -18,7 +18,7 @@ function randFree(){
     return freeLancers;
 }
 //a console log to see if randFree works
-console.log(randFree());
+//console.log(randFree());
 //created an array to store freelancers
 const freeLan = [randFree(), randFree()];
 info.innerHTML = freeLan;
@@ -35,8 +35,8 @@ function render(){
 }
 // gets the sum of all freelancers prices 
 function sumPrice(num){
-    const addPrice = num.reduce((accumulator,current)=>{
-     return accumulator += current.wage},0) 
+    const addPrice = num.reduce((accumulator,current)=>
+        {return accumulator += current.wage},0) 
      return addPrice; 
  }
  // average function 
@@ -44,24 +44,26 @@ function sumPrice(num){
  {
     return sumPrice(x)/ freeLan.length;
  }
- console.log(averagePay(freeLan))
+//console.log(averagePay(freeLan))
  //this render was to check if it worked
 render();
+//shows sum of the first 2 freelancers
+console.log(sumPrice(freeLan))
+//starting average of the first 2 freelancers
+avg.innerHTML= averagePay(freeLan);
 //created the interval of which frelancers are added
 const i = setInterval(() => {
     freeLan.push(randFree());
-    // shows the sum of all the freelancers pay
+    // shows the sum of all the freelancers pay in console
     console.log(sumPrice(freeLan));
-    // shows the avg of all the freelancers pay 
+    // shows the avg of all the freelancers pay in console
     console.log(averagePay(freeLan));
-    //updates the HTML with the current average
+    //updates the HTML with the current average on html page
     avg.innerHTML = averagePay(freeLan);
     render();
 
-    if (freeLan.length === 18)
+    if (freeLan.length === 15)
     {
         clearInterval(i)
     }
-},5100);
-
-
+},2100);
