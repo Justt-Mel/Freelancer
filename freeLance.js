@@ -20,7 +20,8 @@ function randFree(){
 //a console log to see if randFree works
 console.log(randFree());
 //created an array to store freelancers
-const freeLan = [randFree()];
+const freeLan = [randFree(), randFree()];
+info.innerHTML = freeLan;
 // render function to minipulate the table in the HTML
 function render(){
     const html = freeLan.map((free) => {
@@ -56,11 +57,11 @@ const i = setInterval(() => {
     //updates the HTML with the current average
     avg.innerHTML = averagePay(freeLan);
     render();
-    
+
     if (freeLan.length === 18)
     {
         clearInterval(i)
     }
-}, 100);
+},5100);
 
 
