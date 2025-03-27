@@ -1,4 +1,5 @@
 const table = document.getElementById('.info')
+const table1 = document.getElementById('.avg')
 //bin of random Jobs to generate from 
 const jobs = ["Programmer","Tutor","Artist","Lawyer","Accountant","Photographer","Driver","Gardener"];
 //bin of random names to generate from
@@ -31,13 +32,35 @@ function render(){
     })
         info.innerHTML = html.join("")
 }
+// gets the sum of all freelancers prices 
+function sumPrice(num){
+    const addPrice = num.reduce((accumulator,current)=>{
+     return accumulator += current.wage},0) 
+     return addPrice; 
+ }
+ // average function 
+ function averagePay(x)
+ {
+    return sumPrice(x)/ freeLan.length;
+ }
+ console.log(averagePay(freeLan))
+ //this render was to check if it worked
 render();
 //created the interval of which frelancers are added
 const i = setInterval(() => {
-    freeLan.push(randFree())
+    freeLan.push(randFree());
+    // shows the sum of all the freelancers pay
+    console.log(sumPrice(freeLan));
+    // shows the avg of all the freelancers pay 
+    console.log(averagePay(freeLan));
+    //updates the HTML with the current average
+    avg.innerHTML = averagePay(freeLan);
     render();
+    
     if (freeLan.length === 18)
     {
         clearInterval(i)
     }
-}, 2000);
+}, 100);
+
+
